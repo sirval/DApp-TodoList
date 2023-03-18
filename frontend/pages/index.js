@@ -227,7 +227,7 @@ export default function Home() {
                   color: "#930202",
                 }}
               >
-                You're currently logged out. Click the Connect Wallet Button to
+                You are currently logged out. Click the Connect Wallet Button to
                 connect your wallet
               </p>
               <br />
