@@ -1,4 +1,4 @@
-export const TodoContractAddress = "0x2f09dE217f82977067287248e87e74b9DcF6E02A";
+export const TodoContractAddress = "0x1237B452a5D9E50Ab7efB88f7c43e37eb75D2293";
 
 export const abi = [
   {
@@ -32,6 +32,25 @@ export const abi = [
       {
         indexed: false,
         internalType: "bool",
+        name: "isCompleted",
+        type: "bool",
+      },
+    ],
+    name: "CompletedTask",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: false,
+        internalType: "uint256",
+        name: "taskId",
+        type: "uint256",
+      },
+      {
+        indexed: false,
+        internalType: "bool",
         name: "isDeleted",
         type: "bool",
       },
@@ -51,8 +70,31 @@ export const abi = [
         name: "isDeleted",
         type: "bool",
       },
+      {
+        internalType: "bool",
+        name: "isCompleted",
+        type: "bool",
+      },
     ],
     name: "addTask",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "taskId",
+        type: "uint256",
+      },
+      {
+        internalType: "bool",
+        name: "isCompleted",
+        type: "bool",
+      },
+    ],
+    name: "completeTask",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -94,6 +136,11 @@ export const abi = [
           {
             internalType: "bool",
             name: "isDeleted",
+            type: "bool",
+          },
+          {
+            internalType: "bool",
+            name: "isCompleted",
             type: "bool",
           },
         ],

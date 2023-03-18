@@ -107,6 +107,7 @@ export default function Home() {
     const payload = {
       taskText: input,
       isDeleted: false,
+      isCompleted: false,
     };
 
     try {
@@ -114,7 +115,11 @@ export default function Home() {
       const signer = await getProviderOrSigner(true);
       const TodoContract = new Contract(TodoContractAddress, abi, signer);
       setIsLoading(true);
-      TodoContract.addTask(payload.taskText, payload.isDeleted)
+      TodoContract.addTask(
+        payload.taskText,
+        payload.isDeleted,
+        payload.isCompleted
+      )
         .then((response) => {
           setTodos([...todos, payload]);
           setInput("");
@@ -129,6 +134,24 @@ export default function Home() {
         .catch((err) => {
           console.error(err);
         });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  //mark a task as completed
+  const completeTask = (key) => async () => {
+    try {
+      setIsLoading(true);
+      const signer = await getProviderOrSigner(true);
+      const TodoContract = new Contract(TodoContractAddress, abi, signer);
+      const completeTackTx = await TodoContract.completeTask(key, true);
+      setIsLoading(false);
+      swal({
+        icon: "success",
+        title: "Success",
+        text: "Task Successfully Completed",
+      });
     } catch (error) {
       console.error(error);
     }
@@ -181,6 +204,7 @@ export default function Home() {
         addTask={addTask}
         allTasks={allTasks}
         deleteTask={deleteTask}
+        completeTask={completeTask}
       />
     );
   };
