@@ -114,3 +114,22 @@
     flex-direction: column;
   }
 }
+.connect-wallet{
+
+  position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    flex-direction: column;
+}
+
+@media (min-width: 650px) {
+  .connect-wallet{
+    position: absolute;
+    top: 60px;
+    left: 50px;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+  }
+}
