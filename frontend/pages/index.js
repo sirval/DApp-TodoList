@@ -128,7 +128,7 @@ export default function Home() {
           swal({
             icon: "success",
             title: "Success",
-            text: "Task successfully added. Please wait for task to sync",
+            text: "Task successfully added. Please wait blockchain response",
           });
         })
         .catch((err) => {
@@ -150,7 +150,7 @@ export default function Home() {
       swal({
         icon: "success",
         title: "Success",
-        text: "Task Successfully Completed",
+        text: "Task Successfully Completed. Please wait for bloxkchain response",
       });
     } catch (error) {
       console.error(error);
@@ -168,7 +168,7 @@ export default function Home() {
       swal({
         icon: "success",
         title: "Success",
-        text: "Task successfully deleted. Please wait for task to sync",
+        text: "Task successfully deleted. Please wait for bloxkchain respons",
       });
     } catch (error) {
       console.error(error);
@@ -239,25 +239,7 @@ export default function Home() {
           </div>
         </>
       ) : correctNetwork ? (
-        <>
-          {/* {isLoading && (
-            <Image
-              style={{
-                width: "100px",
-                height: "100px",
-                margin: "20px",
-                display: "inline-block",
-              }}
-              // className={styles.logo}
-              src="/loader.svg"
-              alt="Loader"
-              width={100}
-              height={100}
-              priority
-            />
-          )} */}
-          {renderTodoList()}
-        </>
+        <>{renderTodoList()}</>
       ) : (
         <WrongNetworkMessage />
       )}
